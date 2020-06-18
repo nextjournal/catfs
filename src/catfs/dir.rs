@@ -83,16 +83,7 @@ impl Handle {
     }
 
     pub fn readdir(&mut self) -> error::Result<Option<rlibc::Dirent>> {
-        if self.entry_valid {
-            return Ok(Some(self.entry.clone()));
-        } else {
-            match rlibc::readdir(self.dh)? {
-                Some(entry) => {
-                    return Ok(Some(entry));
-                }
-                None => return Ok(None),
-            }
-        }
+        return Ok(None);
     }
 
     #[allow(dead_code)]
